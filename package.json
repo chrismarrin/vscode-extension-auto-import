@@ -23,9 +23,13 @@
         {
             "name": "martinoppitz",
             "url": "https://github.com/martinoppitz"
+        },
+        {
+            "name": "chrismarrin",
+            "url": "https://github.com/chrismarrin"
         }
     ],
-    "publisher": "moppitz",
+    "publisher": "chrismarrin",
     "engines": {
         "vscode": "^0.10.10"
     },
@@ -63,7 +67,7 @@
             "properties": {
                 "autoimport.filesToScan": {
                     "type": "string",
-                    "default": "${workspaceRoot}/**/*.{js,jsx,ts,tsx}",
+                    "default": "**/*.{js,jsx,ts,tsx}",
                     "description": "Glob for files to watch and scan, e.g ./src/** ./src/app/**/*.ts. Defaults to **/*.{ts,tsx}"
                 },
                 "autoimport.showNotifications": {

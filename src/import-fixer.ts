@@ -51,7 +51,9 @@ export class ImportFixer {
 
     private alreadyResolved(document: vscode.TextDocument, relativePath, importName) {
 
-        let exp = new RegExp('(?:import\ \{)(?:.*)(?:\}\ from\ \')(?:' + relativePath + ')(?:\'\;)')
+        let singleQuoteExp = '(?:import\ \{)(?:.*)(?:\}\ from\ \')(?:' + relativePath + ')(?:\'\;)'
+        let doubleQuoteExp = '(?:import\ \{)(?:.*)(?:\}\ from\ \")(?:' + relativePath + ')(?:\"\;)'
+        let exp = new RegExp( this.doubleQuotes ? doubleQuoteExp : singleQuoteExp );
 
         let currentDoc = document.getText();
 
@@ -77,7 +79,9 @@ export class ImportFixer {
 
     private mergeImports(document: vscode.TextDocument, edit: vscode.WorkspaceEdit, name, file, relativePath: string) {
 
-        let exp = new RegExp('(?:import\ \{)(?:.*)(?:\}\ from\ \')(?:' + relativePath + ')(?:\'\;)')
+        let singleQuoteExp = '(?:import\ \{)(?:.*)(?:\}\ from\ \')(?:' + relativePath + ')(?:\'\;)'
+        let doubleQuoteExp = '(?:import\ \{)(?:.*)(?:\}\ from\ \")(?:' + relativePath + ')(?:\"\;)'
+        let exp = new RegExp( this.doubleQuotes ? doubleQuoteExp : singleQuoteExp );
 
         let currentDoc = document.getText();
 

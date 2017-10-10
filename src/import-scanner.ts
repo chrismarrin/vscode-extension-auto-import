@@ -31,9 +31,13 @@ export class ImportScanner {
             this.scanStarted = new Date();
         }
 
+        console.log("Files to scan:", this.filesToScan );
+
         vscode.workspace
             .findFiles(this.filesToScan, '**/node_modules/**', 99999)
-            .then((files) => this.processWorkspaceFiles(files));
+            .then((files) => {
+                this.processWorkspaceFiles(files)
+            });
 
         vscode.commands
             .executeCommand('extension.scanNodeModules');
@@ -96,7 +100,8 @@ export class ImportScanner {
             propertyMatches = data.match(/(export let) ([a-zA-z])\w+/g),
             varMatches = data.match(/(export var) ([a-zA-z])\w+/g),
             constMatches = data.match(/(export const) ([a-zA-z])\w+/g),
-            functionMatches = data.match(/(export function) ([a-zA-z])\w+/g)
+            functionMatches = data.match(/(export function) ([a-zA-z])\w+/g),
+            enumMatches = data.match(/(export enum) ([a-zA-z])\w+/g)
 
         if (classMatches) {
             classMatches.forEach(m => {
@@ -129,6 +134,15 @@ export class ImportScanner {
             functionMatches.forEach(m => {
                 let workingFile: string =
                     m.replace('export', '').replace('function', '');
+
+                ImportDb.saveImport(workingFile, data, file);
+            });
+        }
+
+        if (enumMatches) {
+            enumMatches.forEach(m => {
+                let workingFile: string =
+                    m.replace('export', '').replace('enum', '');
 
                 ImportDb.saveImport(workingFile, data, file);
             });

@@ -15,6 +15,7 @@ Automatically finds, parses and provides code actions and code completion for al
 * [zhaoshengjun](https://github.com/zhaoshengjun)
 * [soates](https://github.com/soates)
 * [third774](https://github.com/third774)
+* [chrismarrin](https://github.com/chrismarrin)
 
 ----
 
@@ -33,6 +34,11 @@ Automatically finds, parses and provides code actions and code completion for al
 ----
 
 ## Changelog
+
+### 1.3.4
+
+- Fork from https://github.com/martinoppitz/vscode-extension-auto-import
+- fixes some regex statements that did not work with double quotes
 
 ### 1.3.3
 
