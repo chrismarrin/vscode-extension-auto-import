@@ -39,6 +39,7 @@ Automatically finds, parses and provides code actions and code completion for al
 
 - Fork from https://github.com/martinoppitz/vscode-extension-auto-import
 - fixes some regex statements that did not work with double quotes
+- add support for enum import/export
 
 ### 1.3.3
 
